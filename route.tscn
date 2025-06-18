@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://kfxjihrf8u85"]
+
+[ext_resource type="Script" uid="uid://bgcsjq4hy7uho" path="res://script/route.gd" id="1_5w0lj"]
+[ext_resource type="Texture2D" uid="uid://bd511hbdevpxu" path="res://icon.svg" id="2_omaxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w0lj"]
+size = Vector2(786, 37.75)
+
+[node name="Route" type="Area2D"]
+script = ExtResource("1_5w0lj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(595, -62.25)
+scale = Vector2(10.0391, 12.543)
+texture = ExtResource("2_omaxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(569, 68)
+shape = SubResource("RectangleShape2D_5w0lj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
