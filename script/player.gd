@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var vitesse = 40 # Vitesse du joueur
+@export var vitesse = 300 # Vitesse du joueur
 var tailleEcran # Taille de l'écran (limite de jeux)
 
 
