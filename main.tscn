@@ -29,6 +29,7 @@ wait_time = 0.5
 [node name="TimerStart" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+autostart = true
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(576, 502)
@@ -37,3 +38,7 @@ position = Vector2(576, 502)
 curve = SubResource("Curve2D_1bvp3")
 
 [node name="VoitureSpawnLocation" type="PathFollow2D" parent="PathVoiture"]
+
+[connection signal="timeout" from="TimerVoiture" to="." method="_on_timer_voiture_timeout"]
+[connection signal="timeout" from="TimerScore" to="." method="_on_timer_score_timeout"]
+[connection signal="timeout" from="TimerStart" to="." method="_on_timer_start_timeout"]
