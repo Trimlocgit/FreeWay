@@ -3,6 +3,7 @@ extends Area2D
 
 @export var vitesse = 300 # Vitesse du joueur
 var tailleEcran # Taille de l'écran (limite de jeux)
+var vie = 2 # Nombre de vie du joueur
 
 
 func _ready():

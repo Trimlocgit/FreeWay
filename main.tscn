@@ -1,12 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://6yuqi14bgbq3"]
+[gd_scene load_steps=6 format=3 uid="uid://6yuqi14bgbq3"]
 
+[ext_resource type="Script" uid="uid://bvtkug8ei06yk" path="res://script/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://1am11f3xxovq" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://kfxjihrf8u85" path="res://route.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ubvxbribfe3x" path="res://voiture.tscn" id="2_1bvp3"]
+
+[sub_resource type="Curve2D" id="Curve2D_1bvp3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
+}
+point_count = 2
 
 [node name="main" type="Node"]
+script = ExtResource("1_h2yge")
+voiture_scene = ExtResource("2_1bvp3")
 
 [node name="Route" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(40, 55)
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(628, 502)
+
+[node name="TimerVoiture" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="TimerScore" type="Timer" parent="."]
+
+[node name="TimerStart" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlayerStartPosition" type="Marker2D" parent="."]
+position = Vector2(576, 502)
+
+[node name="PathVoiture" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1bvp3")
+
+[node name="VoitureSpawnLocation" type="PathFollow2D" parent="PathVoiture"]
