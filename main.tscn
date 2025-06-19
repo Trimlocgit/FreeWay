@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://6yuqi14bgbq3"]
+[gd_scene load_steps=7 format=3 uid="uid://6yuqi14bgbq3"]
 
 [ext_resource type="Script" uid="uid://bvtkug8ei06yk" path="res://script/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://1am11f3xxovq" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://kfxjihrf8u85" path="res://route.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ubvxbribfe3x" path="res://voiture.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://fby0pjtkpiy7" path="res://hud.tscn" id="5_lquwl"]
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
@@ -29,7 +30,6 @@ wait_time = 0.5
 [node name="TimerStart" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
 [node name="PlayerStartPosition" type="Marker2D" parent="."]
 position = Vector2(576, 502)
@@ -39,6 +39,10 @@ curve = SubResource("Curve2D_1bvp3")
 
 [node name="VoitureSpawnLocation" type="PathFollow2D" parent="PathVoiture"]
 
+[node name="HUD" parent="." instance=ExtResource("5_lquwl")]
+
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="TimerVoiture" to="." method="_on_timer_voiture_timeout"]
 [connection signal="timeout" from="TimerScore" to="." method="_on_timer_score_timeout"]
 [connection signal="timeout" from="TimerStart" to="." method="_on_timer_start_timeout"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

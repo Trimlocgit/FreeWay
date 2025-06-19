@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs4ok"]
 size = Vector2(125, 123)
 
-[node name="Voiture" type="RigidBody2D"]
+[node name="Voiture" type="RigidBody2D" groups=["voitures"]]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_hs4ok")

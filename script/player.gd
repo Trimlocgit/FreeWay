@@ -4,7 +4,7 @@ signal hit
 
 @export var vitesse = 300 # Vitesse du joueur
 var tailleEcran # Taille de l'écran (limite de jeux)
-var vie = 2 # Nombre de vie du joueur
+#var vie = 2 # Nombre de vie du joueur
 
 
 func _ready():
@@ -22,12 +22,9 @@ func _process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, tailleEcran)
 
 func _on_body_entered(body: Node2D) -> void:
-	vie -= 1
-	print(vie)
 	hit.emit()
-	if vie == 0:
-		hide()
-		$CollisionShape2D.set_deferred("disabled", true)
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
 	
 
 #Fonction appelé lors du lancement d'une nouvelle partie
