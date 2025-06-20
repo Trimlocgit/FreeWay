@@ -17,7 +17,11 @@ func _process(delta: float) -> void:
 		velocite.x += vitesse
 	if (Input.is_action_pressed("gauche")):
 		velocite.x -= vitesse
-		
+	if(Input.is_action_pressed("Accelerer")):
+		velocite.y -= vitesse/3
+	if(Input.is_action_pressed("Ralentire")):
+		velocite.y += vitesse
+	
 	position += velocite * delta
 	position = position.clamp(Vector2.ZERO, tailleEcran)
 
