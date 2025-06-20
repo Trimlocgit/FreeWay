@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp5xgbv3nj0dq"]
+
+[ext_resource type="PackedScene" uid="uid://ubvxbribfe3x" path="res://voiture.tscn" id="1_37kl0"]
+
+[node name="Test" type="Node"]
+
+[node name="Voiture" parent="." instance=ExtResource("1_37kl0")]
+position = Vector2(372, 121)
+
+[node name="Voiture2" parent="." instance=ExtResource("1_37kl0")]
+position = Vector2(365, 299)
