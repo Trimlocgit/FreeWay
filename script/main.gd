@@ -22,17 +22,20 @@ func _ready() -> void:
 func _on_timer_voiture_timeout() -> void:
 	
 	var voiture = voiture_scene.instantiate()
-	
+	var liste_spawn = [115, 345, 575, 805, 1035]
 	var voiture_location = $PathVoiture/VoitureSpawnLocation
 	voiture_location.progress_ratio = randf()
 	
+	voiture_location.position.x = liste_spawn[randf_range(0, 5)]
+	
 	voiture.position = voiture_location.position
+	print(voiture.position)
 	
 	var direction = voiture_location.rotation + PI / 2
 	
 	voiture.rotation = direction
 	
-	var velocite = Vector2(randf_range(150, 250), 0)
+	var velocite = Vector2(randf_range(150 + score, 250 + score), 0)
 	voiture.linear_velocity = velocite.rotated(direction)
 	
 	add_child(voiture)
