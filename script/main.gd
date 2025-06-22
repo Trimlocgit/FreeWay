@@ -34,7 +34,7 @@ func _on_timer_voiture_timeout() -> void:
 	#Met la voiture perpendiculaire
 	var direction = voiture_location.rotation + PI / 2
 	
-	#voiture.rotation = direction
+	
 	#Varie la vitesse de la voiture
 	var velocite = Vector2(randf_range(150 + score, 250 + score), 0)
 	voiture.linear_velocity = velocite.rotated(direction)

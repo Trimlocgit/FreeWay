@@ -26,9 +26,10 @@ func _process(delta: float) -> void:
 	position = position.clamp(Vector2.ZERO, tailleEcran)
 
 func _on_body_entered(body: Node2D) -> void:
-	hit.emit()
-	hide()
-	$CollisionShape2D.set_deferred("disabled", true)
+	pass
+	#hit.emit()
+	#hide()
+	#$CollisionShape2D.set_deferred("disabled", true)
 	
 
 #Fonction appelé lors du lancement d'une nouvelle partie
