@@ -18,9 +18,9 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if bouge < 0:
-		position.x -= 115
+		position.x -= 10
 	elif bouge > 0:
-		position.x += 115
+		position.x += 10
 	
 
 func _on_devant_body_entered(body: Node2D) -> void:

@@ -7,7 +7,8 @@
 size = Vector2(110, 112)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hs4ok"]
-b = Vector2(49, 0)
+a = Vector2(-50, 0)
+b = Vector2(89, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rw1m6"]
 a = Vector2(0, -124)
@@ -34,7 +35,7 @@ shape = SubResource("RectangleShape2D_hs4ok")
 [node name="Devant" type="Area2D" parent="."]
 
 [node name="MarkerDevant" type="CollisionShape2D" parent="Devant"]
-position = Vector2(-22, -165)
+position = Vector2(-21, -158)
 shape = SubResource("SegmentShape2D_hs4ok")
 
 [node name="Droite" type="Area2D" parent="."]
