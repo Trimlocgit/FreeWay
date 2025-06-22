@@ -27,9 +27,9 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	pass
-	#hit.emit()
-	#hide()
-	#$CollisionShape2D.set_deferred("disabled", true)
+	hit.emit()
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
 	
 
 #Fonction appelé lors du lancement d'une nouvelle partie
