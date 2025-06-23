@@ -1,7 +1,9 @@
 extends Node
 
+@onready var menuPause = $MenuPause
 @export var voiture_scene: PackedScene
 var score
+var pause = false
 
 func gameOver():
 	$TimerScore.stop()
@@ -15,9 +17,6 @@ func newGame():
 	$HUD.showMessage("Prépare toi !")
 	$Player.start($PlayerStartPosition.position)
 	$TimerStart.start()
-
-func _ready() -> void:
-	pass
 
 func _on_timer_voiture_timeout() -> void:
 	#Peut être opti
@@ -40,7 +39,26 @@ func _on_timer_voiture_timeout() -> void:
 	voiture.linear_velocity = velocite.rotated(direction)
 	
 	add_child(voiture)
+	
+func _ready() -> void:
+	#Cache le menu pause par défault
+	menuPause.hide()
 
+func _process(delta: float) -> void:
+	#Action pause du joueur
+	if(Input.is_action_just_pressed("pause") && !$TimerScore.is_stopped()):
+		menuPauseFunc()
+		
+
+#Fonction pause
+func menuPauseFunc():
+	if pause:
+		menuPause.hide()
+		Engine.time_scale = 1
+	else:
+		menuPause.show()
+		Engine.time_scale = 0
+	pause = !pause
 
 func _on_timer_score_timeout() -> void:
 	score += 1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://6yuqi14bgbq3"]
+[gd_scene load_steps=8 format=3 uid="uid://6yuqi14bgbq3"]
 
 [ext_resource type="Script" uid="uid://bvtkug8ei06yk" path="res://script/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://1am11f3xxovq" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://kfxjihrf8u85" path="res://route.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ubvxbribfe3x" path="res://voiture.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://fby0pjtkpiy7" path="res://hud.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bhlnglea3rrwf" path="res://menu_pause.tscn" id="6_7mycd"]
 
 [sub_resource type="Curve2D" id="Curve2D_1bvp3"]
 _data = {
@@ -40,6 +41,8 @@ curve = SubResource("Curve2D_1bvp3")
 [node name="VoitureSpawnLocation" type="PathFollow2D" parent="PathVoiture"]
 
 [node name="HUD" parent="." instance=ExtResource("5_lquwl")]
+
+[node name="MenuPause" parent="." instance=ExtResource("6_7mycd")]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="TimerVoiture" to="." method="_on_timer_voiture_timeout"]

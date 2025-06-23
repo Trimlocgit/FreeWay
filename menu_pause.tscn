@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhlnglea3rrwf"]
+
+[ext_resource type="Script" uid="uid://b7u7okjsf86iv" path="res://script/menu_pause.gd" id="1_nhsed"]
+
+[node name="MenuPause" type="CanvasLayer"]
+script = ExtResource("1_nhsed")
+
+[node name="PauseLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 105.0
+offset_right = 87.0
+offset_bottom = 188.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Pause"
+
+[node name="ButtonReprendre" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -15.5
+offset_right = 45.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Reprendre"
+
+[node name="ButtonQuitter" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -192.0
+offset_right = 114.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 60
+text = "Quitter"
+
+[connection signal="pressed" from="ButtonReprendre" to="." method="_on_button_reprendre_pressed"]
+[connection signal="pressed" from="ButtonQuitter" to="." method="_on_button_quitter_pressed"]
