@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	position += velocite * delta
 	position = position.clamp(Vector2.ZERO, tailleEcran)
 
+
 func _on_body_entered(body: Node2D) -> void:
 	pass
 	hit.emit()
