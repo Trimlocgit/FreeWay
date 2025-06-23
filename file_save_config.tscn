@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cordmmyg748wj"]
+
+[ext_resource type="Script" uid="uid://dawq6pvy0c8jq" path="res://script/file_save_config.gd" id="1_rkvmn"]
+
+[node name="FileSaveConfig" type="Node"]
+script = ExtResource("1_rkvmn")

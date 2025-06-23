@@ -25,6 +25,12 @@ func _process(delta: float) -> void:
 	position += velocite * delta
 	position = position.clamp(Vector2.ZERO, tailleEcran)
 
+func sauvegarde():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		#"skinActuel" : $Sprite2D
+		}
 
 func _on_body_entered(body: Node2D) -> void:
 	pass

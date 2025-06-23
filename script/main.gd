@@ -1,6 +1,7 @@
 extends Node
 
 @onready var menuPause = $MenuPause
+@onready var saveConf = $FileSaveConfig
 @export var voiture_scene: PackedScene
 var score
 var pause = false
@@ -8,6 +9,8 @@ var pause = false
 func gameOver():
 	$TimerScore.stop()
 	$TimerVoiture.stop()
+	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	saveConf.save_game()
 	$HUD.showGameOver()
 	
 func newGame():
@@ -41,6 +44,11 @@ func _on_timer_voiture_timeout() -> void:
 	add_child(voiture)
 	
 func _ready() -> void:
+	#Charge les données
+	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	
+	saveConf.load_game()
+	
 	#Cache le menu pause par défault
 	menuPause.hide()
 
@@ -76,3 +84,12 @@ func _on_hud_start_game() -> void:
 
 func _on_player_hit() -> void:
 	gameOver()
+
+func sauvegarde():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"score" : score
+	}
+	return save_dict
+		
