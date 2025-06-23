@@ -27,16 +27,15 @@ func _on_devant_body_entered(body: Node2D) -> void:
 	var velocite = Vector2.ZERO
 	
 	if !gauchePrise && caseActuelle != 0:
-		print("Bouge gauche ", caseActuelle)
 		bougeGauche.emit()
 		bouge = -1
 		caseActuelle -= 1
-	elif caseActuelle != 4:
-		print("Bouge Droite ", caseActuelle)
+	elif caseActuelle != 4 && !droitePrise:
 		bougeDroite.emit()
 		bouge = 1
 		caseActuelle += 1
 		
+
 
 
 func _on_devant_body_exited(body: Node2D) -> void:
@@ -48,3 +47,10 @@ func _on_gauche_body_entered(body: Node2D) -> void:
 
 func _on_gauche_body_exited(body: Node2D) -> void:
 	gauchePrise = false
+
+#Vérifie si un élément est sur sa droite
+func _on_droite_body_entered(body: Node2D) -> void:
+	droitePrise = true
+
+func _on_droite_body_exited(body: Node2D) -> void:
+	droitePrise = false

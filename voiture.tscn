@@ -6,9 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs4ok"]
 size = Vector2(110, 112)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_hs4ok"]
-a = Vector2(-50, 0)
-b = Vector2(89, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw1m6"]
+size = Vector2(111, 105)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rw1m6"]
 a = Vector2(0, -124)
@@ -35,8 +34,8 @@ shape = SubResource("RectangleShape2D_hs4ok")
 [node name="Devant" type="Area2D" parent="."]
 
 [node name="MarkerDevant" type="CollisionShape2D" parent="Devant"]
-position = Vector2(-21, -158)
-shape = SubResource("SegmentShape2D_hs4ok")
+position = Vector2(-2.5, -130.5)
+shape = SubResource("RectangleShape2D_rw1m6")
 
 [node name="Droite" type="Area2D" parent="."]
 
@@ -54,5 +53,7 @@ shape = SubResource("SegmentShape2D_jk6xw")
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="body_entered" from="Devant" to="." method="_on_devant_body_entered"]
 [connection signal="body_exited" from="Devant" to="." method="_on_devant_body_exited"]
+[connection signal="body_entered" from="Droite" to="." method="_on_droite_body_entered"]
+[connection signal="body_exited" from="Droite" to="." method="_on_droite_body_exited"]
 [connection signal="body_entered" from="Gauche" to="." method="_on_gauche_body_entered"]
 [connection signal="body_exited" from="Gauche" to="." method="_on_gauche_body_exited"]
