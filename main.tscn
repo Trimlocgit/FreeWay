@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://6yuqi14bgbq3"]
+[gd_scene load_steps=10 format=3 uid="uid://6yuqi14bgbq3"]
 
 [ext_resource type="Script" uid="uid://bvtkug8ei06yk" path="res://script/main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://1am11f3xxovq" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://kfxjihrf8u85" path="res://route.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ubvxbribfe3x" path="res://voiture.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://be0oxey2hq6b5" path="res://coin.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://cordmmyg748wj" path="res://file_save_config.tscn" id="3_272bh"]
 [ext_resource type="PackedScene" uid="uid://fby0pjtkpiy7" path="res://hud.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bhlnglea3rrwf" path="res://menu_pause.tscn" id="6_7mycd"]
@@ -17,6 +18,7 @@ point_count = 2
 [node name="main" type="Node"]
 script = ExtResource("1_h2yge")
 voiture_scene = ExtResource("2_1bvp3")
+coin_scene = ExtResource("3_5vw27")
 
 [node name="FileSaveConfig" parent="." instance=ExtResource("3_272bh")]
 
@@ -48,6 +50,7 @@ curve = SubResource("Curve2D_1bvp3")
 [node name="MenuPause" parent="." groups=["Persist"] instance=ExtResource("6_7mycd")]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="plusCoin" from="Player" to="." method="_on_player_plus_coin"]
 [connection signal="timeout" from="TimerVoiture" to="." method="_on_timer_voiture_timeout"]
 [connection signal="timeout" from="TimerScore" to="." method="_on_timer_score_timeout"]
 [connection signal="timeout" from="TimerStart" to="." method="_on_timer_start_timeout"]

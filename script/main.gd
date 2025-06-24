@@ -3,8 +3,10 @@ extends Node
 @onready var menuPause = $MenuPause
 @onready var saveConf = $FileSaveConfig
 @export var voiture_scene: PackedScene
+@export var coin_scene: PackedScene
 var score
 var pause = false
+var coins
 
 func gameOver():
 	$TimerScore.stop()
@@ -22,26 +24,33 @@ func newGame():
 	$TimerStart.start()
 
 func _on_timer_voiture_timeout() -> void:
+	var element
+	var spawn = randi_range(0, 6)
+	
 	#Peut être opti
-	var voiture = voiture_scene.instantiate()
+	if spawn < 2:
+		element = coin_scene.instantiate()
+	else:
+		element = voiture_scene.instantiate()
+	
 	var liste_spawn = [115, 345, 575, 805, 1035]
-	var voiture_location = $PathVoiture/VoitureSpawnLocation
-	voiture_location.progress_ratio = randf()
+	var element_location = $PathVoiture/VoitureSpawnLocation
+	element_location.progress_ratio = randf()
 	
 	#Choisit une des quatres voie
-	voiture_location.position = Vector2(liste_spawn[voiture.caseDepart], 0)
+	element_location.position = Vector2(liste_spawn[element.caseDepart], 0)
 	
-	voiture.position = voiture_location.position
+	element.position = element_location.position
 	
-	#Met la voiture perpendiculaire
-	var direction = voiture_location.rotation + PI / 2
+	#Met l'element perpendiculaire
+	var direction = element_location.rotation + PI / 2
 	
 	
-	#Varie la vitesse de la voiture
+	#Varie la vitesse de l'element
 	var velocite = Vector2(randf_range(150 + score, 250 + score), 0)
-	voiture.linear_velocity = velocite.rotated(direction)
+	element.linear_velocity = velocite.rotated(direction)
 	
-	add_child(voiture)
+	add_child(element)
 	
 func _ready() -> void:
 	#Charge les données
@@ -93,3 +102,7 @@ func sauvegarde():
 	}
 	return save_dict
 		
+
+
+func _on_player_plus_coin() -> void:
+	coins += 1

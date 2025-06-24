@@ -1,6 +1,7 @@
 extends Area2D
 
 signal hit
+signal plusCoin
 
 @export var vitesse = 300 # Vitesse du joueur
 var tailleEcran # Taille de l'écran (limite de jeux)
@@ -33,10 +34,13 @@ func sauvegarde():
 		}
 
 func _on_body_entered(body: Node2D) -> void:
-	pass
-	hit.emit()
-	hide()
-	$CollisionShape2D.set_deferred("disabled", true)
+	if body.name == "voiture":
+		hit.emit()
+		hide()
+		$CollisionShape2D.set_deferred("disabled", true)
+	elif body.name == "coin":
+		print("+1")
+		plusCoin.emit()
 	
 
 #Fonction appelé lors du lancement d'une nouvelle partie
