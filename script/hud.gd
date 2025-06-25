@@ -25,6 +25,9 @@ func scoreUpdate(score):
 	$ScoreLabel.text = str(score)
 	
 
+func coinUpdate(coin):
+	$CoinLabel.text = str(coin)
+
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()
 	$ButtonTest.hide()

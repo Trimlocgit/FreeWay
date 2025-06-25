@@ -106,3 +106,4 @@ func sauvegarde():
 
 func _on_player_plus_coin() -> void:
 	coins += 1
+	$HUD.coinUpdate(coins)
